@@ -181,3 +181,5 @@ fragments/      # Reusable CLAUDE.md snippets to symlink into projects
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed
 - A challenger CLI for debate commands (any of: `codex`, `claude`, `aider`)... I use `codex` as my challenger
 - macOS (`pbcopy`) or Linux (`xclip`) for clipboard features
+- [Notion MCP server](https://github.com/anthropics/claude-code-notion-mcp) — required for `/assess` with Notion URLs
+- [Linear MCP server](https://github.com/anthropics/claude-code-linear-mcp) — required for `/assess` with Linear tickets/URLs
