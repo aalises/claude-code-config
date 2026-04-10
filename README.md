@@ -123,6 +123,22 @@ timestamped `.wip` file.
 
 Auto-copies to clipboard. When you come back, `/resume` picks it up.
 
+### `/assess` — Deep issue assessment from Notion or Linear
+
+Fetches an issue from an external tracker, classifies it, traces it through
+the codebase with parallel Explore agents, and produces a structured
+assessment with root cause analysis and an implementation plan.
+
+```
+/assess https://notion.so/some-page-id
+/assess https://linear.app/n8n/issue/N8N-1234/some-title
+/assess N8N-1234
+```
+
+Accepts Notion URLs, Linear URLs, or Linear ticket IDs. Outputs a structured
+assessment (type, severity, affected areas, proposed fix, verification steps)
+directly in the conversation — analysis only, no code changes.
+
 ## Hooks
 
 ### `copy-plan-to-clipboard.sh`
