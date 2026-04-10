@@ -87,6 +87,42 @@ Auto-copies to clipboard. Useful for:
 - Writing PR descriptions
 - Resuming work in a future session
 
+### `/resume` — Pick up where you left off
+
+Reconstructs context when you come back to a project or branch. Reads
+`handoff.md`, `.wip`, recent git log, uncommitted changes, and plan files,
+then gives you a 30-second briefing.
+
+```
+/resume
+```
+
+The complement to `/handoff` and `/wip` — they write context out, this reads
+it back in.
+
+### `/diff-summary` — Clipboard-ready change summary
+
+Generates a concise summary of your branch changes for pasting into PRs,
+Linear updates, Slack, or Notion. Not a review — just a clean "what and why".
+
+```
+/diff-summary
+```
+
+Auto-copies to clipboard. Stays under 20 lines.
+
+### `/wip` — Quick work-in-progress snapshot
+
+Lighter than `/handoff` — for when you need to context-switch fast. Captures
+what you're doing, what's next, and any blockers in 3-4 lines. Appends to a
+timestamped `.wip` file.
+
+```
+/wip
+```
+
+Auto-copies to clipboard. When you come back, `/resume` picks it up.
+
 ## Hooks
 
 ### `copy-plan-to-clipboard.sh`
