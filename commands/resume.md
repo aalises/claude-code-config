@@ -58,3 +58,8 @@ Present a concise briefing:
 ```
 
 Keep it scannable. The user wants to get oriented in 30 seconds, not read a report.
+
+## Step 5 — Cleanup
+
+After presenting the briefing, delete `.wip` and `handoff.md` if they existed
+— they've been consumed. The context is now in this conversation.

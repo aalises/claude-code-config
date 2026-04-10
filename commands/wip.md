@@ -17,7 +17,7 @@ From the conversation context, write a short WIP note covering:
 
 ## Format
 
-Append to `.wip` in the repo root (create if it doesn't exist). Each entry
+Write to `.wip` in the repo root (overwrite any previous entry). The entry
 is timestamped:
 
 ```
