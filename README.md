@@ -1,14 +1,13 @@
-# claude-code-config
+# Claude Code Configuration
 
 My personal Claude Code setup — commands, hooks, and config I use daily for
-AI-assisted development. The core idea: use multiple AI agents as
-**adversarial collaborators**, not just code generators.
+AI-assisted development.
 
 ## Philosophy
 
 These tools are built around a few patterns I keep coming back to:
 
-- **Multi-agent debate** — One agent proposes, another challenges. Fresh eyes
+- **Multi-agent debate** — One agent proposes, another challenges (Been doing it with Codex). Fresh eyes
   catch what the author misses. The orchestrator (Claude Code) keeps full
   session context while challengers come in cold each round.
 - **Filesystem as communication layer** — Agents read and write to shared
@@ -17,7 +16,7 @@ These tools are built around a few patterns I keep coming back to:
 - **Session context is precious** — Claude Code remembers every file it read.
   Don't throw that away by spawning fresh instances when you don't have to.
 - **Clipboard-first output** — Plans and handoffs go straight to clipboard
-  for pasting into PRs, Linear, Notion, or Slack.
+  for pasting into PRs, Linear, Notion, or Slack, or your favourite coworker
 
 ## Setup
 
@@ -128,5 +127,5 @@ fragments/      # Reusable CLAUDE.md snippets to symlink into projects
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed
-- A challenger CLI for debate commands (any of: `codex`, `claude`, `aider`)
+- A challenger CLI for debate commands (any of: `codex`, `claude`, `aider`)... I use `codex` as my challenger
 - macOS (`pbcopy`) or Linux (`xclip`) for clipboard features
