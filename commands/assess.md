@@ -1,6 +1,6 @@
 ---
-description: Assess a Notion page or Linear ticket — classify, root-cause, and plan
-argument-hint: <notion-url | linear-ticket-id>
+description: Assess a Notion page or Linear ticket/URL — classify, root-cause, and plan
+argument-hint: <notion-url | linear-url | linear-ticket-id>
 allowed-tools: Bash, Read, Write, Glob, Grep, Agent, WebFetch
 ---
 
@@ -17,9 +17,10 @@ Determine the source type from `$ARGUMENTS`:
   tool (`mcp__notion__notion-fetch`) to fetch the page. If the content is very
   large, extract the relevant portions (title, description, reproduction steps,
   screenshots, traces, comments).
-- **Linear ticket** (matches `XXX-1234` pattern): use the Linear MCP tool
-  (`mcp__linear-server__get_issue`) to fetch the issue. Also fetch comments
-  with `mcp__linear-server__list_comments`.
+- **Linear ticket** (matches `XXX-1234` pattern) or **Linear URL** (contains
+  `linear.app`): extract the ticket ID (e.g. `N8N-1234` from the URL path)
+  and use the Linear MCP tool (`mcp__linear-server__get_issue`) to fetch the
+  issue. Also fetch comments with `mcp__linear-server__list_comments`.
 - **URL**: use WebFetch as fallback.
 
 Extract all available signal: title, description, reproduction steps,
