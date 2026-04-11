@@ -35,16 +35,16 @@ Commands in `~/.claude/commands/` are available in every repo.
 
 ## Commands
 
-### `/challenge-plan` — Debate a plan with another AI agent
+### `/challenge` — Debate a proposal with another AI agent
 
 Multi-agent debate loop. Claude Code orchestrates while an external AI agent
 (Codex, Claude, Aider, etc.) independently explores the codebase and
-challenges your plan.
+challenges your proposal (plan, assessment, triage, design, etc.).
 
 ```
-/challenge-plan codex -q         # Use OpenAI Codex as challenger
-/challenge-plan claude -p        # Use another Claude Code instance
-/challenge-plan aider --message  # Use Aider
+/challenge codex -q         # Use OpenAI Codex as challenger
+/challenge claude -p        # Use another Claude Code instance
+/challenge aider --message  # Use Aider
 ```
 
 **How it works:**

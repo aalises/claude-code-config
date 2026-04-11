@@ -27,7 +27,7 @@ Run these and synthesize:
 Check for any `.claude/plans/*.md` files. If found, read the most recent one
 — it captures the implementation plan and decisions.
 
-Also check for `plan.md` in the repo root (left by challenge-plan sessions).
+Also check for `plan.md` in the repo root (left by challenge sessions).
 
 ### 4. Branch context
 

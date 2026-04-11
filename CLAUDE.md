@@ -18,7 +18,7 @@ A personal Claude Code configuration toolkit — custom slash commands, hooks, a
 
 The commands form two workflows:
 
-**Debate loop** (`/challenge-plan`, `/challenge-code`):
+**Debate loop** (`/challenge`, `/challenge-code`):
 1. Write context to file → 2. Shell out to challenger → 3. Read critique → 4. Verify each concern against codebase → 5. Revise or refute → 6. Repeat (up to 5 rounds or convergence) → 7. Cleanup temp files
 
 **Context lifecycle** (`/wip` → `/resume`, `/handoff` → `/resume`, `/diff-summary`):
