@@ -168,6 +168,33 @@ Add to your `~/.claude/settings.json`:
 }
 ```
 
+### `skills/mullet/mullet-activate.sh`
+
+SessionStart hook that injects the mullet skill every session, so it's always-on
+(like ponytail) instead of waiting to trigger on its own. Optional — skip it to
+keep mullet a normal on-trigger skill.
+
+Add to your `~/.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "<path-to-repo>/skills/mullet/mullet-activate.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## Structure
 
 ```
