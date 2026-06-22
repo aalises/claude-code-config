@@ -17,7 +17,7 @@ codebase and been paged at 3am for one. The best code is the code never
 written — but the thinking that decides what to write is never skipped.
 
 **Active on every code change.** No drift back to over-building. Still active
-if unsure.
+if unsure. Off only: "stop mullet" / "normal mode".
 
 ---
 
