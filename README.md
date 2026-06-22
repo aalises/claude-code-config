@@ -168,26 +168,38 @@ Add to your `~/.claude/settings.json`:
 }
 ```
 
-### `skills/mullet/mullet-activate.sh`
+### Mullet (always-on mode)
 
-SessionStart hook that injects the mullet skill every session, so it's always-on
-(like ponytail) instead of waiting to trigger on its own. Optional — skip it to
-keep mullet a normal on-trigger skill.
+Three optional hooks make mullet always-on like ponytail, with an on/off toggle.
+Skip them all to keep mullet a normal on-trigger skill. A single flag file
+(`~/.claude/.mullet-active`) drives all three; default is on.
+
+- `mullet-activate.sh` — SessionStart: injects the skill each session (skips if off).
+- `mullet-tracker.sh` — UserPromptSubmit: `stop mullet`/`normal mode` → off,
+  `start mullet`/`mullet mode` → on. Makes the off-switch persist across turns.
+- `mullet-statusline.sh` — shows `[MULLET]` unless off.
 
 Add to your `~/.claude/settings.json`:
 
 ```json
 {
+  "statusLine": {
+    "type": "command",
+    "command": "<path-to-repo>/skills/mullet/mullet-statusline.sh"
+  },
   "hooks": {
     "SessionStart": [
       {
         "matcher": "startup|resume|clear|compact",
         "hooks": [
-          {
-            "type": "command",
-            "command": "<path-to-repo>/skills/mullet/mullet-activate.sh",
-            "timeout": 5
-          }
+          { "type": "command", "command": "<path-to-repo>/skills/mullet/mullet-activate.sh", "timeout": 5 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "<path-to-repo>/skills/mullet/mullet-tracker.sh", "timeout": 5 }
         ]
       }
     ]
