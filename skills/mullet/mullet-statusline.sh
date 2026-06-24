@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Mullet statusline badge. Shows [MULLET] unless the flag file says off.
+# Mullet statusline badge. Shows [MULLET:<level>] unless off. Default full.
 flag="$HOME/.claude/.mullet-active"
-[ -f "$flag" ] && [ "$(tr -d '[:space:]' <"$flag")" = "off" ] && exit 0
-printf '\033[38;5;173m[MULLET]\033[0m'
+level="full"
+[ -f "$flag" ] && level="$(tr -d '[:space:]' <"$flag" | tr '[:upper:]' '[:lower:]')"
+[ "$level" = "off" ] && exit 0
+case "$level" in lite|full|ultra) ;; *) level="full" ;; esac
+printf '\033[38;5;173m[MULLET:%s]\033[0m' "$level"

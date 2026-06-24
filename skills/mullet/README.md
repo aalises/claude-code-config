@@ -62,6 +62,24 @@ It's a reflex, not a research project. First lazy solution that works wins.
 
 ---
 
+## Intensity
+
+One dial — how hard it cuts. Default is **full**. Everything else stays the
+same at every level; only the aggressiveness of the cutting changes.
+
+| Level | How hard it cuts |
+|---|---|
+| **lite** | Lightest touch. Cuts only obvious over-engineering — speculative features, dead abstractions, unrequested config. Keeps structure and readability. |
+| **full** | Default. The full ladder: stdlib/native/one-line before custom code, deletion over addition, shortest working diff. |
+| **ultra** | Most aggressive. Fewest lines and files possible; one-liners and deletion even at some cost to readability. |
+| **off** | Skill inert — back to default behavior. |
+
+The safety floor never moves: validation, security, accessibility,
+data-loss-preventing error handling, and the obvious in-scope parts survive
+every level, ultra included.
+
+---
+
 ## What makes it Mullet (and not just lazy)
 
 Two deliberate rules keep the laziness honest:
@@ -78,14 +96,14 @@ Two deliberate rules keep the laziness honest:
 ## Install (always-on mode)
 
 Mullet ships three optional hooks that make it always-on, with a persistent
-on/off toggle. A single flag file (`~/.claude/.mullet-active`) drives all
-three; default is **on**.
+intensity level. A single flag file (`~/.claude/.mullet-active`) holds the
+level (`off|lite|full|ultra`) and drives all three; default is **full**.
 
 | Script | Hook | Does |
 |---|---|---|
-| `mullet-activate.sh` | `SessionStart` | Injects the skill each session (skips if off) |
-| `mullet-tracker.sh` | `UserPromptSubmit` | Persists the off-switch across turns |
-| `mullet-statusline.sh` | statusline | Shows `[MULLET]` unless off |
+| `mullet-activate.sh` | `SessionStart` | Injects the skill each session, filtered to the active level (skips if off) |
+| `mullet-tracker.sh` | `UserPromptSubmit` | Persists the level across turns |
+| `mullet-statusline.sh` | statusline | Shows `[MULLET:<level>]` unless off |
 
 Make them executable and wire them into `~/.claude/settings.json`:
 
@@ -127,10 +145,11 @@ Skip the hooks entirely to use Mullet as a plain on-trigger skill instead.
 
 | Say | Effect |
 |---|---|
+| `mullet lite` / `mullet full` / `mullet ultra` | Set how hard it cuts |
+| `start mullet` / `mullet mode` | On at `full` |
 | `stop mullet` / `normal mode` | Off — back to default behavior |
-| `start mullet` / `mullet mode` | On |
 
-The off-switch persists across turns and sessions until you turn it back on.
+The level persists across turns and sessions until you change it.
 
 ---
 

@@ -18,7 +18,28 @@ code is the code never written — but the thinking that decides what to write
 is never skipped.
 
 **Active on every code change.** No drift back to over-building. Still active
-if unsure. Off only: "stop mullet" / "normal mode".
+if unsure. Switch how hard you cut with `mullet lite` / `mullet full` /
+`mullet ultra`; turn off with "stop mullet" / "normal mode".
+
+## Intensity
+
+One dial: how hard you cut. Default is **full**. Everything else in this skill
+is the same at every level — only the aggressiveness of the cutting changes.
+
+| Level | How hard it cuts |
+| --- | --- |
+| **lite** | Lightest touch. Cut only obvious over-engineering — speculative features, dead abstractions, unrequested config. Keep reasonable structure and readability; don't collapse to one-liners or fight existing patterns. |
+| **full** | Default. Run the full ladder below: stdlib/native/one-line before custom code, deletion over addition, shortest working diff. |
+| **ultra** | Most aggressive. Fewest lines and files possible. Prefer one-liners and deletion even at some cost to readability; question every line's right to exist. Strip anything not strictly required. |
+
+The safety floor (§2.3) holds at every level: validation, security,
+accessibility, data-loss-preventing error handling, and the obvious in-scope
+parts are never cut — not even in ultra.
+
+Worked example — format a price for display:
+- lite: a small named helper wrapping `Intl.NumberFormat`, reusable across callers.
+- full: one line — `new Intl.NumberFormat(locale, { style: 'currency', currency }).format(n)`.
+- ultra: inlined at the call site; no helper, no wrapper.
 
 ---
 
