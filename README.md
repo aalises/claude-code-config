@@ -170,14 +170,21 @@ Add to your `~/.claude/settings.json`:
 
 ### Mullet (always-on mode)
 
-Three optional hooks make mullet always-on like ponytail, with an on/off toggle.
-Skip them all to keep mullet a normal on-trigger skill. A single flag file
-(`~/.claude/.mullet-active`) drives all three; default is on.
+Three optional hooks make mullet always-on like ponytail, with a graduated
+intensity level. Skip them all to keep mullet a normal on-trigger skill. A
+single flag file (`~/.claude/.mullet-active`) holds the level
+(`off|lite|full|ultra`) and drives all three; default is `full`.
 
-- `mullet-activate.sh` — SessionStart: injects the skill each session (skips if off).
-- `mullet-tracker.sh` — UserPromptSubmit: `stop mullet`/`normal mode` → off,
-  `start mullet`/`mullet mode` → on. Makes the off-switch persist across turns.
-- `mullet-statusline.sh` — shows `[MULLET]` unless off.
+The level is one dial — how hard mullet cuts. `lite` trims only obvious
+over-engineering, `full` runs the whole ladder, `ultra` goes for the fewest
+lines and files possible. The safety floor (validation, security,
+accessibility, data-loss error handling) holds at every level.
+
+- `mullet-activate.sh` — SessionStart: injects the skill each session, filtered to the active level (skips if off).
+- `mullet-tracker.sh` — UserPromptSubmit: `mullet lite|full|ultra` → set level,
+  `start mullet`/`mullet mode` → `full`, `stop mullet`/`normal mode` → off.
+  Persists the level across turns.
+- `mullet-statusline.sh` — shows `[MULLET:<level>]` unless off.
 
 Add to your `~/.claude/settings.json`:
 
