@@ -1,13 +1,10 @@
-```
-  __  __ _   _ _    _    ___ _____
- |  \/  | | | | |  | |  | __|_   _|
- | |\/| | |_| | |__| |__| _|  | |
- |_|  |_|\___/|____|____|___| |_|
+<p align="center">
+  <img src="mullet.png" alt="Mullet" width="240">
+</p>
 
-   business up front · party in the back
-```
+<h1 align="center">Mullet</h1>
 
-# Mullet
+<p align="center"><em>business up front · party in the back</em></p>
 
 **An agent skill for writing the least code that's actually correct.**
 
@@ -146,3 +143,13 @@ skills/mullet/
 ├── mullet-tracker.sh      # UserPromptSubmit on/off tracker
 └── mullet-statusline.sh   # [MULLET] badge
 ```
+
+---
+
+## Credits
+
+Mullet is a mix inspired by two ideas: Andrej Karpathy's coding discipline
+(think before you type, simplicity first, surgical changes, goal-driven
+verification) and [Ponytail](https://github.com/DietrichGebert/ponytail)'s
+deliberate laziness (YAGNI, the decision ladder, shortest working diff). The
+business up front comes from one, the party in the back from the other.
