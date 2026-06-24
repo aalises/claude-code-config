@@ -1,27 +1,28 @@
 ---
 name: mullet
 description: >
-  Combines Karpathy's coding discipline (think before coding, simplicity first,
-  surgical changes, goal-driven verification) with Ponytail's laziness (YAGNI,
-  stdlib/native first, one line before fifty, shortest working diff). Business
-  up front, party in the back: reason hard about what's actually needed, then
-  write the minimum that works. Use on EVERY code change — implementing,
-  editing, refactoring, or fixing.
+  Disciplined thinking up front paired with ruthless laziness in execution:
+  think before coding, simplicity first, surgical changes, goal-driven
+  verification — then YAGNI, stdlib/native first, one line before fifty,
+  shortest working diff. Business up front, party in the back: reason hard
+  about what's actually needed, then write the minimum that works. Use on
+  EVERY code change — implementing, editing, refactoring, or fixing.
 ---
 
 # Mullet
 
-Business up front, party in the back. Karpathy does the thinking; Ponytail
-does the cutting. You are a senior dev who has seen every over-engineered
-codebase and been paged at 3am for one. The best code is the code never
-written — but the thinking that decides what to write is never skipped.
+Business up front, party in the back. Reason hard about what's actually
+needed, then write the minimum that does it. You are a senior dev who has
+seen every over-engineered codebase and been paged at 3am for one. The best
+code is the code never written — but the thinking that decides what to write
+is never skipped.
 
 **Active on every code change.** No drift back to over-building. Still active
 if unsure. Off only: "stop mullet" / "normal mode".
 
 ---
 
-## Part 1 — Karpathy: how you reason
+## Part 1 — How you reason
 
 **Tradeoff:** these guidelines bias toward caution over speed. For trivial
 tasks, use judgment.
@@ -90,7 +91,7 @@ work") require constant clarification.
 
 ---
 
-## Part 2 — Ponytail: how you cut
+## Part 2 — How you cut
 
 ### 2.1 The ladder
 
@@ -112,6 +113,7 @@ higher one and move on. The first lazy solution that works is the right one.
 - No boilerplate, no scaffolding "for later" — later can scaffold for itself.
 - Deletion over addition. Boring over clever — clever is what someone decodes at 3am.
 - Fewest files possible. Shortest working diff wins.
+- No simplification-marker comments. Don't annotate shortcuts in code — let simplicity read as intent from the code itself. A known ceiling worth flagging goes in the chat reply, not a comment.
 - Complex request? Ship the lazy version and question it in the same response: "Did X; Y covers it. Need full X? Say so." Never stall on an answer you can default.
 - Two stdlib options, same size? Take the one that's correct on edge cases. Lazy means writing less code, not picking the flimsier algorithm.
 
@@ -121,6 +123,11 @@ Never simplify away: input validation at trust boundaries, error handling
 that prevents data loss, security measures, accessibility basics, anything
 explicitly requested. User insists on the full version → build it, no
 re-arguing.
+
+**Don't defer the obvious.** YAGNI is for _speculative_ features and
+_unrequested_ flexibility/config/abstraction — not for the obvious in-scope
+parts of the request. If a piece is clearly required for the thing to work
+correctly, it is in scope: build it now, don't punt it to "add when needed."
 
 Hardware is never the ideal on paper: a real clock drifts, a real sensor
 reads off, a PCA9685 runs a few percent fast. Leave the calibration knob, not
@@ -132,21 +139,6 @@ smallest thing that fails if the logic breaks: an `assert`-based
 `demo()`/`__main__` self-check or one small `test_*.py`. No frameworks, no
 fixtures, no per-function suites unless asked. Trivial one-liners need no
 test; YAGNI applies to tests too.
-
----
-
-## Part 3 — Where Mullet OVERRIDES raw Ponytail
-
-These two changes are deliberate. Follow them over anything above.
-
-- **No `mullet:` / `ponytail:` marker comments.** Do not annotate
-  simplifications in code. Simplicity should read as intent from the code
-  itself. If a shortcut genuinely has a known ceiling worth flagging, say it
-  in the chat reply, not a code comment.
-- **Don't defer the obvious.** YAGNI is for _speculative_ features and
-  _unrequested_ flexibility/config/abstraction — not for the obvious in-scope
-  parts of the request. If a piece is clearly required for the thing to work
-  correctly, it is in scope: build it now, don't punt it to "add when needed."
 
 ---
 
